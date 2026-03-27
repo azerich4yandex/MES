@@ -11,12 +11,13 @@
         <relativePath/>
     </parent>
 
-    <artifactId>Infrastructure</artifactId>
+    <artifactId>infrastructure</artifactId>
     <packaging>pom</packaging>
     <name>Infrastructure modules</name>
 
     <modules>
         <module>configuration-service</module>
+        <module>discovery-service</module>
     </modules>
 
 </project>
