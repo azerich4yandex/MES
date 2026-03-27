@@ -8,7 +8,6 @@
         <groupId>com.aliev.mes</groupId>
         <artifactId>infrastructure</artifactId>
         <version>0.0.1</version>
-        <relativePath/>
     </parent>
 
     <artifactId>discovery-service</artifactId>

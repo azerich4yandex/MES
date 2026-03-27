@@ -8,7 +8,6 @@
         <groupId>com.aliev.mes</groupId>
         <artifactId>mes</artifactId>
         <version>0.0.1</version>
-        <relativePath/>
     </parent>
 
     <artifactId>infrastructure</artifactId>
@@ -18,6 +17,7 @@
     <modules>
         <module>configuration-service</module>
         <module>discovery-service</module>
+        <module>gateway-service</module>
     </modules>
 
 </project>
