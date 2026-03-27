@@ -9,6 +9,7 @@ spring:
         native:
           searchLocations:
             - classpath:configurations/infrastructure/{application}
+            - classpath:configurations/interaction/receiving/{application}
 
 eureka:
   client:

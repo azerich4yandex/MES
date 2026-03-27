@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version>
+        <version>3.5.12</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -19,6 +19,8 @@
 
     <modules>
         <module>infrastructure</module>
+        <module>interaction</module>
+        <module>common</module>
     </modules>
 
     <properties>
@@ -53,6 +55,12 @@
     <!-- Управление зависимостями для всех модулей -->
     <dependencyManagement>
         <dependencies>
+            <!-- Внутренние модули -->
+            <dependency>
+                <groupId>com.aliev.mes.common</groupId>
+                <artifactId>interaction-api</artifactId>
+            </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>

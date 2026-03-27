@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    ddl-auto: none
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:6432/orderdb
+    username: root
+    password: root
+  sql:
+    init-mode: always
