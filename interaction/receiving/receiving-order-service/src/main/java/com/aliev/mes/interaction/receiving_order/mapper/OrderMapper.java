@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
 
-    Order toModel(OrderDto dto);
-
     @Mapping(target = "positions", ignore = true)
     OrderDto toDto(Order order);
 
