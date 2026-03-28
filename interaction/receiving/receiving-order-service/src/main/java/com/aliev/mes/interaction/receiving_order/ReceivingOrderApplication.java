@@ -1,4 +1,4 @@
-package com.aliev.mes.interaction.receiving;
+package com.aliev.mes.interaction.receiving_order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

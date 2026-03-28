@@ -1,9 +1,9 @@
-package com.aliev.mes.interaction.receiving.mapper;
+package com.aliev.mes.interaction.receiving_order.mapper;
 
-import com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.position.OrderPositionDto;
-import com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.position.OrderPositionNewDto;
-import com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.position.OrderPositionUpdateDto;
-import com.aliev.mes.interaction.receiving.model.OrderPosition;
+import com.aliev.mes.common.dto.position.OrderPositionDto;
+import com.aliev.mes.common.dto.position.OrderPositionNewDto;
+import com.aliev.mes.common.dto.position.OrderPositionUpdateDto;
+import com.aliev.mes.interaction.receiving_order.model.OrderPosition;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;

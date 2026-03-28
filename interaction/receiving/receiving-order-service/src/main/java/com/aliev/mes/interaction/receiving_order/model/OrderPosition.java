@@ -1,4 +1,4 @@
-package com.aliev.mes.interaction.receiving.model;
+package com.aliev.mes.interaction.receiving_order.model;
 
 import com.aliev.mes.common.dto.enums.ProcessingStatus;
 import jakarta.persistence.*;
@@ -7,15 +7,14 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "received_order")
+@Table(name = "received_order_position")
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Order {
+public class OrderPosition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,16 +23,18 @@ public class Order {
     @Column(name = "external_id")
     String externalId;
 
-    @Column(name = "order_no")
-    String orderNo;
+    @Column(name = "received_order_id")
+    UUID receivedOrder;
 
-    @Column(name = "order_date")
-    LocalDate orderDate;
+    @Column(name = "position_no")
+    Long positionNo;
 
-    @Column(name = "customer_name")
-    String customerName;
+    @Column(name = "product")
+    String product;
 
-    @Enumerated(EnumType.STRING)
+    @Column(name = "quantity")
+    Double quantity;
+
     @Column(name = "status")
     ProcessingStatus status = ProcessingStatus.RECEIVED;
 }

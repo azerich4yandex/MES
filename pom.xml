@@ -57,8 +57,8 @@
         <dependencies>
             <!-- Внутренние модули -->
             <dependency>
-                <groupId>com.aliev.mes.common</groupId>
-                <artifactId>interaction-api</artifactId>
+                <groupId>com.aliev.mes.interaction.receiving</groupId>
+                <artifactId>receiving-order-service</artifactId>
             </dependency>
 
             <dependency>

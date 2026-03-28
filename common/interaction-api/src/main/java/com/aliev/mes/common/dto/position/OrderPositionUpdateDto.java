@@ -1,6 +1,6 @@
-package com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.position;
+package com.aliev.mes.common.dto.position;
 
-import com.aliev.mes.common.dto.enums.ProcessingStatus;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -9,13 +9,15 @@ import java.util.UUID;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OrderPositionDto {
+public class OrderPositionUpdateDto {
 
+    @NotNull(message = "Внешний идентификатор позиции заказа должен быть указан")
     UUID id;
+
     String externalId;
-    UUID receivedOrder;
     Long positionNo;
     String product;
     Double quantity;
-    ProcessingStatus status;
+
+
 }

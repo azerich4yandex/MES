@@ -1,6 +1,6 @@
-package com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.order;
+package com.aliev.mes.common.dto.order;
 
-import com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.position.OrderPositionUpdateDto;
+import com.aliev.mes.common.dto.position.OrderPositionUpdateDto;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Data;

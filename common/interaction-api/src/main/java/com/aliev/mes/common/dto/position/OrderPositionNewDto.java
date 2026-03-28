@@ -1,4 +1,4 @@
-package com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.position;
+package com.aliev.mes.common.dto.position;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -7,12 +7,16 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.util.UUID;
+
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderPositionNewDto {
 
     @NotBlank(message = "Внешний идентификатор позиции заказа должен быть указан")
     String externalId;
+
+    UUID receivedOrder;
 
     @NotNull(message = "Номер позиции заказа должен быть указан")
     @Positive(message = "Номер позиции заказа должен быть больше 0")

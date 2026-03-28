@@ -1,7 +1,7 @@
-package com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.order;
+package com.aliev.mes.common.dto.order;
 
 import com.aliev.mes.common.dto.enums.ProcessingStatus;
-import com.aliev.mes.common.dto.interaction.receiving.receiving_order_service.position.OrderPositionDto;
+import com.aliev.mes.common.dto.position.OrderPositionDto;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
