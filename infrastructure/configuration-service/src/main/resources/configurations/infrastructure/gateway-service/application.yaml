@@ -4,5 +4,10 @@ spring:
       discovery:
         locator:
           enabled: true
+      routes:
+        - id: receiving-order-service
+          uri: lb://receiving-order-service
+          predicates:
+            - Path=/receiving/order
 server:
   port: 8080

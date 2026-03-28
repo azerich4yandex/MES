@@ -2,7 +2,7 @@ spring:
   application:
     name: gateway-service
   config:
-    import: "configuration-service:"
+    import: "configserver:"
   cloud:
     config:
       discovery:

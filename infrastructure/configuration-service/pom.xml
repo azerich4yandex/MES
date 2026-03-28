@@ -10,7 +10,7 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>Configuration-Service</artifactId>
+    <artifactId>configuration-service</artifactId>
     <name>Configuration Service</name>
 
     <dependencies>
