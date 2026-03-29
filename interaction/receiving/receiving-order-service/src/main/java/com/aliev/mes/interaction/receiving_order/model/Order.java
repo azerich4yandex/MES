@@ -8,7 +8,6 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 @Table(name = "received_order")

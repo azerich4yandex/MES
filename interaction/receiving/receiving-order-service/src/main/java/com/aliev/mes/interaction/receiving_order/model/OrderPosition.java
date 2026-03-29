@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "received_order_position")
 @Getter
