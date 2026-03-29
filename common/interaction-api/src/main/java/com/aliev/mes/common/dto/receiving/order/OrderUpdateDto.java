@@ -1,6 +1,6 @@
-package com.aliev.mes.common.dto.order;
+package com.aliev.mes.common.dto.receiving.order;
 
-import com.aliev.mes.common.dto.position.OrderPositionUpdateDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionUpdateDto;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -9,14 +9,13 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderUpdateDto {
 
     @NotNull(message = "Внутренний идентификатор заказа должен быть указан")
-    UUID id;
+    Long id;
 
     String externalId;
     String orderNo;

@@ -18,13 +18,13 @@ public class OrderPosition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    UUID id;
+    Long id;
 
     @Column(name = "external_id")
     String externalId;
 
     @Column(name = "received_order_id")
-    UUID receivedOrder;
+    Long receivedOrder;
 
     @Column(name = "position_no")
     Long positionNo;
@@ -35,6 +35,7 @@ public class OrderPosition {
     @Column(name = "quantity")
     Double quantity;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     ProcessingStatus status = ProcessingStatus.RECEIVED;
 }

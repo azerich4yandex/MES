@@ -1,9 +1,9 @@
 package com.aliev.mes.interaction.receiving_order.service.impl;
 
 import com.aliev.mes.common.dto.enums.ProcessingStatus;
-import com.aliev.mes.common.dto.position.OrderPositionDto;
-import com.aliev.mes.common.dto.position.OrderPositionNewDto;
-import com.aliev.mes.common.dto.position.OrderPositionUpdateDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionNewDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionUpdateDto;
 import com.aliev.mes.common.exceptions.ConflictException;
 import com.aliev.mes.common.exceptions.NoDataFoundException;
 import com.aliev.mes.interaction.receiving_order.mapper.OrderPositionMapper;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -33,10 +32,7 @@ public class OrderPositionServiceImpl implements OrderPositionService {
     @Override
     @Transactional
     public List<OrderPositionDto> createMany(List<OrderPositionNewDto> positions) {
-        return positions.stream()
-                .map(orderPositionMapper::toModel)
-                .map(this::createOne)
-                .collect(Collectors.toList());
+        return positions.stream().map(orderPositionMapper::toModel).map(this::createOne).collect(Collectors.toList());
     }
 
     @Override
@@ -58,7 +54,7 @@ public class OrderPositionServiceImpl implements OrderPositionService {
     }
 
     @Override
-    public List<OrderPositionDto> getByOrderId(UUID orderId) {
+    public List<OrderPositionDto> getByOrderId(Long orderId) {
         List<OrderPosition> fromStorage = orderPositionRepository.getAllByReceivedOrder(orderId);
         return fromStorage.stream().map(orderPositionMapper::toDto).toList();
     }
@@ -66,10 +62,7 @@ public class OrderPositionServiceImpl implements OrderPositionService {
     @Override
     @Transactional
     public List<OrderPositionDto> updateMany(List<OrderPositionUpdateDto> positions) {
-        return positions.stream()
-                .map(orderPositionMapper::toModel)
-                .map(this::updateOne)
-                .collect(Collectors.toList());
+        return positions.stream().map(orderPositionMapper::toModel).map(this::updateOne).collect(Collectors.toList());
     }
 
     @Override
@@ -88,7 +81,7 @@ public class OrderPositionServiceImpl implements OrderPositionService {
 
     @Override
     @Transactional
-    public void deleteByOrderId(UUID orderId) {
+    public void deleteByOrderId(Long orderId) {
         boolean hasLinkedPositions = orderPositionRepository.findAllByReceivedOrderAndStatus(orderId, ProcessingStatus.LINKED);
 
         if (hasLinkedPositions) {

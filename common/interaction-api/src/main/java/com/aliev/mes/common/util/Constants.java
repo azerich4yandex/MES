@@ -9,6 +9,5 @@ public class Constants {
 
     public static final String RECEIVING_ORDER = "/receiving/order";
 
-
     public static final String ID = "{id}";
 }

@@ -1,7 +1,7 @@
-package com.aliev.mes.common.dto.order;
+package com.aliev.mes.common.dto.receiving.order;
 
 import com.aliev.mes.common.dto.enums.ProcessingStatus;
-import com.aliev.mes.common.dto.position.OrderPositionDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionDto;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -9,13 +9,12 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderDto {
 
-    UUID id;
+    Long id;
     String externalId;
     String orderNo;
     LocalDate orderDate;

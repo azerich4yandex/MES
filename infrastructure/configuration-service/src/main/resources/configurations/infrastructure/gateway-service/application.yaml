@@ -9,5 +9,19 @@ spring:
           uri: lb://receiving-order-service
           predicates:
             - Path=/receiving/order
+
+logging:
+  level:
+    org.springframework.web: INFO
+    com.aliev.mes: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%X{traceId}] %logger{36}: %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+
 server:
   port: 8080

@@ -2,9 +2,9 @@ package com.aliev.mes.interaction.receiving_order.controller;
 
 
 import com.aliev.mes.common.dto.enums.ProcessingStatus;
-import com.aliev.mes.common.dto.order.OrderDto;
-import com.aliev.mes.common.dto.order.OrderNewDto;
-import com.aliev.mes.common.dto.order.OrderUpdateDto;
+import com.aliev.mes.common.dto.receiving.order.OrderDto;
+import com.aliev.mes.common.dto.receiving.order.OrderNewDto;
+import com.aliev.mes.common.dto.receiving.order.OrderUpdateDto;
 import com.aliev.mes.common.feign.ReceivingOrderFeignClient;
 import com.aliev.mes.interaction.receiving_order.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.UUID;
 
 import static com.aliev.mes.common.util.Constants.RECEIVING_ORDER;
 
@@ -34,12 +33,12 @@ public class ReceivingOrderController implements ReceivingOrderFeignClient {
     }
 
     @Override
-    public ResponseEntity<List<OrderDto>> getAll(List<UUID> ids, ProcessingStatus status, int from, int size) {
+    public ResponseEntity<List<OrderDto>> getAll(List<Long> ids, ProcessingStatus status, int from, int size) {
         return new ResponseEntity<>(orderService.getAll(ids, status == null ? ProcessingStatus.ALL : status, from, size), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<OrderDto> getById(UUID id) {
+    public ResponseEntity<OrderDto> getById(Long id) {
         return new ResponseEntity<>(orderService.getById(id), HttpStatus.OK);
     }
 
@@ -49,7 +48,7 @@ public class ReceivingOrderController implements ReceivingOrderFeignClient {
     }
 
     @Override
-    public ResponseEntity<Void> delete(UUID id) {
+    public ResponseEntity<Void> delete(Long id) {
         orderService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

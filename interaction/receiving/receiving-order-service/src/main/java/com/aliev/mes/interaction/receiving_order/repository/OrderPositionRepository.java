@@ -7,13 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.UUID;
 
-public interface OrderPositionRepository extends JpaRepository<OrderPosition, UUID> {
+public interface OrderPositionRepository extends JpaRepository<OrderPosition, Long> {
 
     OrderPosition getByExternalId(String externalId);
 
-    List<OrderPosition> getAllByReceivedOrder(UUID receivedOrder);
+    List<OrderPosition> getAllByReceivedOrder(Long receivedOrder);
 
-    void deleteAllByReceivedOrder(UUID receivedOrder);
+    void deleteAllByReceivedOrder(Long receivedOrder);
 
-    boolean findAllByReceivedOrderAndStatus(UUID receivedOrder, ProcessingStatus status);
+    boolean findAllByReceivedOrderAndStatus(Long receivedOrder, ProcessingStatus status);
 }

@@ -1,6 +1,6 @@
 services:
   main-db:
-    image: postgres:16.1
+    image: postgres:16.13
     container_name: main-db
     ports:
       - "6432:5432"
@@ -14,7 +14,7 @@ services:
       interval: 5s
       retries: 10
   db-init:
-    image: postgres:16.1
+    image: postgres:16.13
     container_name: db-init
     depends_on:
       main-db:
@@ -25,5 +25,5 @@ services:
       - |
         set -e
         psql postgresql://root:root@main-db:5432/postgres -v ON_ERROR_STOP=1 <<-EOSQL
-        create database orderdb;
+        CREATE DATABASE IF NOT EXISTS orderdb;
         EOSQL

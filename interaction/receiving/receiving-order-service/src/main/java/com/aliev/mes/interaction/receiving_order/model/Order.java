@@ -18,8 +18,9 @@ import java.util.UUID;
 public class Order {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    UUID id;
+    Long id;
 
     @Column(name = "external_id")
     String externalId;

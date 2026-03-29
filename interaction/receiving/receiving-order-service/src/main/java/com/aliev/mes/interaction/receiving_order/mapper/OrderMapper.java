@@ -1,8 +1,8 @@
 package com.aliev.mes.interaction.receiving_order.mapper;
 
-import com.aliev.mes.common.dto.order.OrderDto;
-import com.aliev.mes.common.dto.order.OrderNewDto;
-import com.aliev.mes.common.dto.order.OrderUpdateDto;
+import com.aliev.mes.common.dto.receiving.order.OrderDto;
+import com.aliev.mes.common.dto.receiving.order.OrderNewDto;
+import com.aliev.mes.common.dto.receiving.order.OrderUpdateDto;
 import com.aliev.mes.interaction.receiving_order.model.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

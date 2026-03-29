@@ -1,6 +1,6 @@
-package com.aliev.mes.common.dto.order;
+package com.aliev.mes.common.dto.receiving.order;
 
-import com.aliev.mes.common.dto.position.OrderPositionNewDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionNewDto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

@@ -1,12 +1,11 @@
 package com.aliev.mes.interaction.receiving_order.service;
 
-import com.aliev.mes.common.dto.position.OrderPositionDto;
-import com.aliev.mes.common.dto.position.OrderPositionNewDto;
-import com.aliev.mes.common.dto.position.OrderPositionUpdateDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionNewDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionUpdateDto;
 import com.aliev.mes.interaction.receiving_order.model.OrderPosition;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface OrderPositionService {
 
@@ -14,11 +13,11 @@ public interface OrderPositionService {
 
     OrderPositionDto createOne(OrderPosition position);
 
-    List<OrderPositionDto> getByOrderId(UUID orderId);
+    List<OrderPositionDto> getByOrderId(Long orderId);
 
     List<OrderPositionDto> updateMany(List<OrderPositionUpdateDto> positions);
 
     OrderPositionDto updateOne(OrderPosition position);
 
-    void deleteByOrderId(UUID orderId);
+    void deleteByOrderId(Long orderId);
 }

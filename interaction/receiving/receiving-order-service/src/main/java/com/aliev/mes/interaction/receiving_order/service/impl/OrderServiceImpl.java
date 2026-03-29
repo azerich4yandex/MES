@@ -1,10 +1,10 @@
 package com.aliev.mes.interaction.receiving_order.service.impl;
 
 import com.aliev.mes.common.dto.enums.ProcessingStatus;
-import com.aliev.mes.common.dto.order.OrderDto;
-import com.aliev.mes.common.dto.order.OrderNewDto;
-import com.aliev.mes.common.dto.order.OrderUpdateDto;
-import com.aliev.mes.common.dto.position.OrderPositionDto;
+import com.aliev.mes.common.dto.receiving.order.OrderDto;
+import com.aliev.mes.common.dto.receiving.order.OrderNewDto;
+import com.aliev.mes.common.dto.receiving.order.OrderUpdateDto;
+import com.aliev.mes.common.dto.receiving.position.OrderPositionDto;
 import com.aliev.mes.common.exceptions.NoDataFoundException;
 import com.aliev.mes.interaction.receiving_order.mapper.OrderMapper;
 import com.aliev.mes.interaction.receiving_order.model.Order;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -52,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
 
         OrderDto result = orderMapper.toDto(order);
 
-        final UUID orderId = order.getId();
+        final Long orderId = order.getId();
 
         if (!dto.getPositions().isEmpty()) {
             dto.getPositions().forEach(position -> position.setReceivedOrder(orderId));
@@ -65,7 +64,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDto getById(UUID id) {
+    public OrderDto getById(Long id) {
         Order order = orderRepository.findById(id).orElseThrow(() -> new NoDataFoundException(String.format("Заказ по уникальному идентификатору %s не найден", id)));
         OrderDto result = orderMapper.toDto(order);
         result.setPositions(orderPositionService.getByOrderId(result.getId()));
@@ -74,7 +73,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderDto> getAll(List<UUID> ids, ProcessingStatus status, int from, int size) {
+    public List<OrderDto> getAll(List<Long> ids, ProcessingStatus status, int from, int size) {
         PageRequest page = PageRequest.of(from, size);
         List<Order> orders;
 
@@ -88,13 +87,11 @@ public class OrderServiceImpl implements OrderService {
             }
         }
 
-        return orders.stream()
-                .map(order -> {
-                    OrderDto dto = orderMapper.toDto(order);
-                    dto.setPositions(orderPositionService.getByOrderId(order.getId()));
-                    return dto;
-                })
-                .collect(Collectors.toList());
+        return orders.stream().map(order -> {
+            OrderDto dto = orderMapper.toDto(order);
+            dto.setPositions(orderPositionService.getByOrderId(order.getId()));
+            return dto;
+        }).collect(Collectors.toList());
     }
 
     @Override
@@ -115,7 +112,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public void delete(UUID id) {
+    public void delete(Long id) {
         Order order = orderRepository.findById(id).orElseThrow(() -> new NoDataFoundException(String.format("Заказ по уникальному идентификатору %s не найден", id)));
         orderPositionService.deleteByOrderId(order.getId());
         orderRepository.delete(order);

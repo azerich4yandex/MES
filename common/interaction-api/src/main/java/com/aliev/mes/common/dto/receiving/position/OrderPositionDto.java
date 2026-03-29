@@ -1,19 +1,17 @@
-package com.aliev.mes.common.dto.position;
+package com.aliev.mes.common.dto.receiving.position;
 
 import com.aliev.mes.common.dto.enums.ProcessingStatus;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import java.util.UUID;
-
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderPositionDto {
 
-    UUID id;
+    Long id;
     String externalId;
-    UUID receivedOrder;
+    Long receivedOrder;
     Long positionNo;
     String product;
     Double quantity;
