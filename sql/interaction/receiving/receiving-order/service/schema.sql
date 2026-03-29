@@ -1,5 +1,7 @@
-CREATE SCHEMA IF NOT EXISTS orderdb;
-COMMENT ON SCHEMA orderdb IS 'receiving-order-service database';
+CREATE SCHEMA IF NOT EXISTS externalorderdb;
+COMMENT ON SCHEMA externalorderdb IS 'receiving-order-service database';
+SET search_path TO externalorderdb;
+
 -- ReceivedOrder
 CREATE TABLE IF NOT EXISTS received_order
 (
@@ -27,7 +29,7 @@ CREATE TABLE IF NOT EXISTS received_order_position
 (
     id                BIGSERIAL PRIMARY KEY,
     external_id       VARCHAR(255) NOT NULL,
-    received_order_id BIGSERIAL    NOT NULL,
+    received_order_id BIGINT       NOT NULL,
     position_no       BIGINT,
     product           VARCHAR(255),
     quantity          DOUBLE PRECISION,
