@@ -11,13 +11,13 @@ public interface OrderPositionService {
 
     List<OrderPositionDto> createMany(List<OrderPositionNewDto> positions);
 
-    OrderPositionDto createOne(OrderPosition position);
+    OrderPositionDto createOne(OrderPositionNewDto position);
 
     List<OrderPositionDto> getByOrderId(Long orderId);
 
     List<OrderPositionDto> updateMany(List<OrderPositionUpdateDto> positions);
 
-    OrderPositionDto updateOne(OrderPosition position);
+    OrderPositionDto updateOne(OrderPositionUpdateDto position);
 
     void deleteByOrderId(Long orderId);
 }

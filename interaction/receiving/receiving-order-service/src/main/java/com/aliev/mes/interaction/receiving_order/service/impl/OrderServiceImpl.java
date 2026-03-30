@@ -121,17 +121,17 @@ public class OrderServiceImpl implements OrderService {
     private UpdateResult updateOrderFields(Order fromStorage, Order fromClient) {
         boolean isChanged = false;
 
-        if (!fromClient.getOrderNo().isBlank() && !fromStorage.getOrderNo().equals(fromClient.getOrderNo())) {
+        if (fromClient.getOrderNo() != null && !fromClient.getOrderNo().isBlank() && !fromStorage.getOrderNo().equals(fromClient.getOrderNo())) {
             fromStorage.setOrderNo(fromClient.getOrderNo());
             isChanged = true;
         }
 
-        if (!(fromClient.getOrderDate() == null) && !fromStorage.getOrderDate().equals(fromClient.getOrderDate())) {
+        if (fromClient.getOrderDate() != null && !fromStorage.getOrderDate().equals(fromClient.getOrderDate())) {
             fromStorage.setOrderDate(fromClient.getOrderDate());
             isChanged = true;
         }
 
-        if (!fromClient.getCustomerName().isBlank() && !fromStorage.getCustomerName().equals(fromClient.getCustomerName())) {
+        if (fromClient.getCustomerName() != null && !fromClient.getCustomerName().isBlank() && !fromStorage.getCustomerName().equals(fromClient.getCustomerName())) {
             fromStorage.setCustomerName(fromClient.getCustomerName());
             isChanged = true;
         }

@@ -32,12 +32,13 @@ public class OrderPositionServiceImpl implements OrderPositionService {
     @Override
     @Transactional
     public List<OrderPositionDto> createMany(List<OrderPositionNewDto> positions) {
-        return positions.stream().map(orderPositionMapper::toModel).map(this::createOne).collect(Collectors.toList());
+        return positions.stream().map(this::createOne).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
-    public OrderPositionDto createOne(OrderPosition position) {
+    public OrderPositionDto createOne(OrderPositionNewDto dto) {
+        OrderPosition position = orderPositionMapper.toModel(dto);
         OrderPosition fromStorage = orderPositionRepository.getByExternalId(position.getExternalId());
         UpdateResult updateResult = new UpdateResult(fromStorage, false);
         if (fromStorage != null) {
@@ -62,12 +63,14 @@ public class OrderPositionServiceImpl implements OrderPositionService {
     @Override
     @Transactional
     public List<OrderPositionDto> updateMany(List<OrderPositionUpdateDto> positions) {
-        return positions.stream().map(orderPositionMapper::toModel).map(this::updateOne).collect(Collectors.toList());
+        return positions.stream().map(this::updateOne).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
-    public OrderPositionDto updateOne(OrderPosition position) {
+    public OrderPositionDto updateOne(OrderPositionUpdateDto dto) {
+        OrderPosition position = orderPositionMapper.toModel(dto);
+
         OrderPosition fromStorage = orderPositionRepository.findById(position.getId()).orElseThrow(() -> new NoDataFoundException(String.format("Позиция заказа по уникальному идентификатору %s не найдена", position.getId())));
 
         UpdateResult updateResult = updatePositionFields(fromStorage, position);
